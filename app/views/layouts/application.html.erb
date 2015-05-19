@@ -13,7 +13,12 @@
   </head>
 
   <body>
+  <section class="round">
+    <% flash.each do |key, value| %>
+        <div data-alert class="alert-box success radius"><%= value %><a href="#" class="close">&times;</a></div>
+    <% end %>
 
+  </section>
     <%= yield %>
 
   </body>

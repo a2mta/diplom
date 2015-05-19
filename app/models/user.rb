@@ -1,15 +1,3 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                 :integer         not null, primary key
-#  name               :string
-#  email              :string
-#  created_at         :datetime        not null
-#  updated_at         :datetime        not null
-#  encrypted_password :string
-#
-
 class User < ActiveRecord::Base
 
   attr_accessor :password
@@ -75,3 +63,18 @@ class User < ActiveRecord::Base
     Digest::SHA2.hexdigest(string)
   end
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer         not null, primary key
+#  name               :string
+#  email              :string
+#  created_at         :datetime        not null
+#  updated_at         :datetime        not null
+#  encrypted_password :string
+#  salt               :string
+#  info               :text
+#
+

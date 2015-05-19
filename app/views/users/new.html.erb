@@ -29,10 +29,20 @@
 
     <div class="field">
 
+      <%= f.label :info %>
+
+
+      <%= f.text_area :info %>
+
+
+    </div>
+
+    <div class="field">
+
       <%= f.label :password %>
 
 
-      <%= f.text_field :password %>
+      <%= f.password_field :password %>
 
 
     </div>
@@ -42,13 +52,15 @@
       <%= f.label :password_confirmation %>
 
 
-      <%= f.text_field :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
 
 
     </div>
+
+
     <div class="actions">
 
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up", :class => 'button radius' %>
 
     </div>
 

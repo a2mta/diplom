@@ -1,0 +1,21 @@
+<h1>Sign in</h1>
+<%= form_for(:session, :url => sessions_path) do |f| %>
+
+    <div class="filed">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <div class="filed">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+      <div class="filed">
+        <%= f.submit "Sign in" %>
+      </div>
+    </div>
+    <div data-alert class="alert-box success radius">
+      <%= f.error_messages %>
+      <a href="#" class="close">&times;</a>
+    </div>
+<% end %>
+
+<p>New user? <%= link_to "Sign ip now!", signup_path %></p>

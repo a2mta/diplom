@@ -1,67 +1,51 @@
-<h1>Sign up</h1>
-
-<%= form_for(@user) do |f| %>
-    <% @user.errors.full_messages.each do |message| %>
-        <div data-alert class="alert-box success radius">
-          <%= message %>
-          <a href="#" class="close">&times;</a>
+<div class="row">
+  <h1 class="text-center">Регистрация</h1>
+  <%= form_for(@user) do |f| %>
+      <% @user.errors.messages.values.each do |message| %>
+          <%message.each do  |m| %>
+              <div data-alert class="small-4 columns small-centered alert-box warning radius">
+                <%= m %>
+                <a href="#" class="close">&times;</a>
+              </div>
+          <%end %>
+      <% end %>
+      <div class="row">
+        <div class="small-4 columns text-center small-centered">
+          <%= f.label "Имя" %>
+          <%= f.text_field :name %>
         </div>
-    <% end %>
-    <div class="field">
+      </div>
+      <div class="row">
+        <div class="small-4 columns text-center small-centered">
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-4 columns text-center small-centered">
+          <%= f.label "Краткая информация" %>
+          <%= f.text_area :info %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-4 columns text-center small-centered">
+          <%= f.label "Пароль" %>
+          <%= f.password_field :password %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-4 columns text-center small-centered">
+          <%= f.label "Подтверждение пароля"%>
+          <%= f.password_field :password_confirmation %>
+        </div>
+      </div>
 
-      <%= f.label :name %>
-
-
-      <%= f.text_field :name %>
-
-
-    </div>
-
-    <div class="field">
-
-      <%= f.label :email %>
-
-
-      <%= f.text_field :email %>
-
-
-    </div>
-
-    <div class="field">
-
-      <%= f.label :info %>
-
-
-      <%= f.text_area :info %>
-
-
-    </div>
-
-    <div class="field">
-
-      <%= f.label :password %>
+      <div class="row">
+        <div class="small-4 columns text-center small-centered">
+          <%= f.submit "Sign in", :class => 'button radius' %>
+        </div>
+      </div>
 
 
-      <%= f.password_field :password %>
-
-
-    </div>
-
-    <div class="field">
-
-      <%= f.label :password_confirmation %>
-
-
-      <%= f.password_field :password_confirmation %>
-
-
-    </div>
-
-
-    <div class="actions">
-
-      <%= f.submit "Sign up", :class => 'button radius' %>
-
-    </div>
-
-<% end %>
+  <% end %>
+</div>

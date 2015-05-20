@@ -4,21 +4,21 @@ class User < ActiveRecord::Base
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :email, :presence => true,
+  validates :email, presence: { message: "Email не может быть пустым" },
 
-            :format => {:with => email_regex},
+            :format => {:with => email_regex, message: "Email не соответствует формату" },
 
             :uniqueness => {:case_sensitive => false}
 
-  validates :name, :presence => true,
+  validates :name, presence: { message: "Имя не может быть пустым" },
 
             :length => {:maximum => 50}
 
-  validates :password, :presence => true,
+  validates :password, presence: { message: "Пароль не может быть пустым" },
 
-            :confirmation => true,
+            confirmation: { message: "Пароль не совпадают" },
 
-            :length => {:within => 6..40}
+            :length => {:within => 6..40,  message: "Пароль cлишком короткий (минимум 6 символов)"}
 
 
   before_save :encrypt_password

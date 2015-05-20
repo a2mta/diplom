@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
   def new
-    @title = "Sign in"
     if signed_in?
       redirect_to @current_user
     end
@@ -11,8 +10,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:session][:email],
                              params[:session][:password])
     if user.nil?
-      flash.now[:error] = "Invalid email/password combination"
-      @title = "Sign in"
+      flash[:notice] = "Неверный логин или пароль"
       render 'new'
     else
       sign_in user

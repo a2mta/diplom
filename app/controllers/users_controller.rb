@@ -1,11 +1,16 @@
 class UsersController < ApplicationController
+
   def new
     @title = "Sign up"
     @user = User.new
   end
 
   def index
-    @users = User.all
+    if signed_in?
+      @users = User.all
+    else
+      redirect_to root_path
+    end
   end
 
   def create

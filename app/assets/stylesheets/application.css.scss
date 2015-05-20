@@ -14,4 +14,23 @@
  *= require_self
 
  */
+@import "compass";
+@import "compass/reset";
 @import "foundation";
+#gk-header {
+  background: transparent!important;
+  overflow: hidden;
+}
+
+#gk-bg {
+  background: transparent;
+}
+
+#bg-video {
+  background: url('poster.jpg') no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+}

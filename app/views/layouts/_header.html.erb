@@ -10,8 +10,16 @@
       </ul>
       <!-- Right Nav Section -->
       <ul class="right">
-        <li><%= link_to "Регистрация", signup_path %></li>
-        <li><%= link_to "Авторизация", signin_path %></li>
+        <% if signed_in? %>
+            <li><%= link_to "Профиль", current_user %></li>
+            <li><%= link_to "Все пользователи", users_path %></li>
+            <li><%= link_to "Настройки", edit_user_path(current_user) %></li>
+            <li><%= link_to "Выйти", signout_path %></li>
+        <% else %>
+            <li><%= link_to "Регистрация", signup_path %></li>
+            <li><%= link_to "Авторизация", signin_path %></li>
+        <% end %>
+
       </ul>
     </section>
   </nav>

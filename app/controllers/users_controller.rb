@@ -13,8 +13,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
   def create
     @user = User.new(user_params)
+
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to sample application!"
@@ -32,6 +47,6 @@ class UsersController < ApplicationController
   private
   ## Strong Parameters
   def user_params
-    params.require(:user).permit(:name, :email, :info, :password, :password_confirmation)
+    params.require(:user).permit(:name, :avatar, :email, :info, :password, :password_confirmation)
   end
 end

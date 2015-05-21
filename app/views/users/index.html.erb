@@ -1,4 +1,14 @@
-<% @users.each do |user| %>
-    <li> <%= user.name %></li>
-    <li> <%= user.info %></li>
-<% end %>
+<div class="wrapper">
+  <div class="row">
+  <% @users.each do |user| %>
+
+        <div class="large-6 columns">
+          <%= image_tag(user.avatar.url(:medium), class: "user_avatar") %>
+          <p><strong>Имя:</strong> <%= user.name %></p>
+
+          <p><strong>Email:</strong> <%= user.email %></p>
+        </div>
+
+  <% end %>
+  </div>
+</div>

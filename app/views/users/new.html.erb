@@ -39,6 +39,12 @@
           <%= f.password_field :password_confirmation %>
         </div>
       </div>
+      <div class="row">
+        <div class="small-4 columns text-center small-centered">
+          <%= f.label "Аватар" %>
+          <%= f.file_field :avatar %>
+        </div>
+      </div>
 
       <div class="row">
         <div class="small-4 columns text-center small-centered">
@@ -46,6 +52,6 @@
         </div>
       </div>
 
-
   <% end %>
+
 </div>

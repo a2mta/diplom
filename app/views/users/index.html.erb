@@ -3,7 +3,9 @@
   <% @users.each do |user| %>
 
         <div class="large-6 columns">
+          <a href="http://localhost:3000/users/<%= user.id %>">
           <%= image_tag(user.avatar.url(:medium), class: "user_avatar") %>
+          </a>
           <p><strong>Имя:</strong> <%= user.name %></p>
 
           <p><strong>Email:</strong> <%= user.email %></p>

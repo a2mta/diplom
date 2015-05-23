@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def new
     @title = "Sign up"
     @user = User.new
@@ -35,13 +34,14 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to sample application!"
       redirect_to @user
     else
-      @title = "Sign Up"
       render 'new'
     end
   end
 
   def show
     @user  = User.find(params[:id])
+    @microposts = @user.microposts
+    @micropost = current_user.microposts.build if signed_in?
   end
 
   private

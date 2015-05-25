@@ -2,9 +2,10 @@
   <div id="user_bg">
     <%= image_tag(@user.avatar.url(:medium), class: "user_avatar") %>
   </div>
-
   <div class="row">
+
     <div class="small-6 large-5 columns">
+      <%= render 'follow_form' if signed_in? %>
       <% if @user.microposts.any? %>
           <h3>Посты (<%= @user.microposts.count %>)</h3>
           <ol class="microposts">
@@ -14,6 +15,23 @@
     </div>
     <div class="small-6 large-7 columns">
       <h2>Личная информация </h2><br/>
+      <% @user ||= current_user %>
+      <p>
+        <a href="<%= following_user_path(@user) %>">
+          <strong id="following" class="stat">
+            <%= @user.followed_users.count %>
+          </strong>
+          добавлено в друзья
+        </a></p>
+
+      <p>
+        <a href="<%= followers_user_path(@user) %>">
+          <strong id="followers" class="stat">
+            <%= @user.followers.count %>
+          </strong>
+          друзей
+        </a>
+      </p>
 
       <p><strong>Имя:</strong> <%= @user.name %></p>
 

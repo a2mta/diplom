@@ -1,25 +1,33 @@
 class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :reverse_relationships, foreign_key: "followed_id",
+           class_name:  "Relationship",
+           dependent:   :destroy
+  has_many :followers, through: :reverse_relationships, source: :follower
+
   attr_accessor :password
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => {:medium => "300x300>", :thumb => "100x100#"}, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :email, presence: { message: "Email не может быть пустым" },
+  validates :email, presence: {message: "Email не может быть пустым"},
 
-            :format => {:with => email_regex, message: "Email не соответствует формату" },
+            :format => {:with => email_regex, message: "Email не соответствует формату"},
 
             :uniqueness => {:case_sensitive => false}
 
-  validates :name, presence: { message: "Имя не может быть пустым" },
+  validates :name, presence: {message: "Имя не может быть пустым"},
 
             :length => {:maximum => 50}
 
-  validates :password, presence: { message: "Пароль не может быть пустым" },
+  validates :password, presence: {message: "Пароль не может быть пустым"},
 
-            confirmation: { message: "Пароль не совпадают" },
+            confirmation: {message: "Пароль не совпадают"},
 
-            :length => {:within => 6..40,  message: "Пароль cлишком короткий (минимум 6 символов)"}
+            :length => {:within => 6..40, message: "Пароль cлишком короткий (минимум 6 символов)"}
 
 
   before_save :encrypt_password
@@ -31,6 +39,18 @@ class User < ActiveRecord::Base
   def destroy
     sign_out
     redirect_to root_path
+  end
+
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy!
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
   end
 
   class << self

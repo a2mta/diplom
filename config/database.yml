@@ -33,8 +33,8 @@ test:
   database: kurs_p__test
 
 production:
-  <<: *default
-  database: kurs_p__production
-  username:
-  password:
+  host: ec2-54-83-25-238.compute-1.amazonaws.com
+  database: dfomgi1pn3rv47
+  username: kfftrrzcocyoam
+  password: o44zzZz7_FsD2-Zh08nxVNRGFs
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - kurs_p_test@127.0.0.1" uuid="fcf5a6e4-a2e0-4021-80bd-81249e3d508c">
+      <secret-storage>master_key</secret-storage>
+      <user-name>atmta</user-name>
+      <schema-pattern>kurs_p_test.pg_catalog kurs_p_test.public</schema-pattern>
+      <default-schemas>kurs_p_test.pg_catalog kurs_p_test.public</default-schemas>
+    </data-source>
+    <data-source name="PostgreSQL - kurs_p_development@127.0.0.1" uuid="ae052ff3-b015-4c00-a935-37cc92601bd4">
+      <secret-storage>master_key</secret-storage>
+      <user-name>atmta</user-name>
+      <schema-pattern>kurs_p_development.pg_catalog kurs_p_development.public</schema-pattern>
+      <default-schemas>kurs_p_development.pg_catalog kurs_p_development.public</default-schemas>
+    </data-source>
+  </component>
+</project>

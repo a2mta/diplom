@@ -13,5 +13,17 @@
       <schema-pattern>kurs_p_development.pg_catalog kurs_p_development.public</schema-pattern>
       <default-schemas>kurs_p_development.pg_catalog kurs_p_development.public</default-schemas>
     </data-source>
+    <data-source name="Rails tutor: development" uuid="096d9084-80d6-465c-8a6d-9c615ff8d234">
+      <user-name>atmta</user-name>
+      <user-password>dfcddfd8dfcbdfc4dfcbdfdedfcbdf9edf99</user-password>
+      <schema-pattern>kurs_p_development.pg_catalog kurs_p_development.public</schema-pattern>
+      <default-schemas>kurs_p_development.pg_catalog kurs_p_development.public</default-schemas>
+    </data-source>
+    <data-source name="Rails tutor: test" uuid="23274019-b163-4957-add4-04fdb7b8504a">
+      <user-name>atmta</user-name>
+      <user-password>dfcddfd8dfcbdfc4dfcbdfdedfcbdf9edf99</user-password>
+      <schema-pattern>kurs_p__test.pg_catalog kurs_p__test.public</schema-pattern>
+      <default-schemas>kurs_p__test.pg_catalog kurs_p__test.public</default-schemas>
+    </data-source>
   </component>
 </project>

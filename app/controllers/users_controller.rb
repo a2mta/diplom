@@ -50,6 +50,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @microposts = @user.microposts
     @micropost = current_user.microposts.build if signed_in?
+    @achivments = @user.achivments
+    @achivment = current_user.achivments.build if signed_in?
   end
 
   def following

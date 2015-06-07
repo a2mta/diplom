@@ -1,6 +1,26 @@
 <li>
-  <span class="content"><%= achivment.content %></span><br/>
-  <span class="content"><%= achivment.achive_type %></span><br/>
+  Я <%=
+    if achivment.achive_type == 'walk'
+      render plain: "прошел"
+    elsif achivment.achive_type == 'run'
+      render plain: "пробежал"
+    else
+      render plain: "отжался"
+    end %>
+  <span><%= achivment.count %>
+    <%=
+        if achivment.achive_type == 'walk'
+          render plain: "метров"
+        elsif achivment.achive_type == 'run'
+          render plain: "метров"
+        else
+          render plain: "раз"
+        end %> <br/> от: <%= achivment.start %> <br/> до: <%= achivment.finish %> </span><br/>
+  <%=
+      if achivment.achive_type == 'walk' or achivment.achive_type == 'run'
+        render :text => "за #{achivment.time} минут".html_safe
+      end %>
+  <span class="content">Доп. информация<br/><%= achivment.content %></span><br/>
   <span class="timestamp">
     <strong>Написано:</strong> <%= time_ago_in_words(achivment.created_at) %> ago.
   </span>

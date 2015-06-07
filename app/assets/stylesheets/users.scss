@@ -3,15 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #user_bg {
   width: 100%;
+  padding-top: 10%;
   height: 300px;
   background-color: lightskyblue;
 
 }
 .user_avatar {
   border-radius: 50%;
-  margin-top: 75px;
-  margin-left: 30px;
+  margin-left: 25px;
   -webkit-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.75);
+  width: 200px;
+  height: 200px;
+}
+
+#achivment_content, #achivment_start, #achivment_finish, #achivment_count, #achivment_time {
+  display: none;
 }

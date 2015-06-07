@@ -5,7 +5,7 @@ class AchivmentsController < ApplicationController
     @achivment = current_user.achivments.build(achivment_params)
     if @achivment.save
       flash[:success] = "Achve created!"
-      redirect_to root_url
+      redirect_to current_user
     end
   end
 
@@ -15,6 +15,6 @@ class AchivmentsController < ApplicationController
   private
 
   def achivment_params
-    params.require(:achivment).permit(:content, :achive_type, :start, :finish, :count)
+    params.require(:achivment).permit(:content, :achive_type, :start, :finish, :count, :time)
   end
 end

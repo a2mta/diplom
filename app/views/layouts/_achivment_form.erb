@@ -6,9 +6,14 @@
         </div>
     <% end %>
     <div class="field">
+      Выберите тип достижения:
+      <%= f.select :achive_type, [['---',''],['Пробежка','run'],['Отжимания','medium'],['Спортивная ходьба','walk']] %>
       <%= f.text_area :content, placeholder: "Напишите что нибудь..." %>
+      <%= f.text_area :start, placeholder: "Начало" %>
+      <%= f.text_area :finish, placeholder: "Конец" %>
+      <%= number_field(:achivment, :count, step: 1) %>
+      <%= number_field(:achivment, :time, step: 1) %>
 
-      <%= f.collection_select :achive_type, @achivments, :id, :content, :prompt => "Select a prospect" %>
     </div>
     <%= f.submit "Отправить", class: "button radius" %>
 <% end %>

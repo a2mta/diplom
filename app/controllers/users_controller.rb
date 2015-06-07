@@ -47,11 +47,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @microposts = @user.microposts
-    @micropost = current_user.microposts.build if signed_in?
-    @achivments = @user.achivments
-    @achivment = current_user.achivments.build if signed_in?
+    if signed_in?
+      @user = User.find(params[:id])
+      @microposts = @user.microposts
+      @micropost = current_user.microposts.build if signed_in?
+      @achivments = @user.achivments
+      @achivment = current_user.achivments.build if signed_in?
+    else
+      redirect_to root_path
+    end
+
   end
 
   def following

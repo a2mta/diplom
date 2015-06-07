@@ -1,25 +1,32 @@
 <div class="wrapper">
   <div id="user_bg">
-    <%= image_tag(@user.avatar.url(:medium), class: "user_avatar") %>
+    <div class="user_avatar" style="background-image: url('<%= @user.avatar.url(:medium)%>')"></div>
   </div>
+
   <div class="row">
 
-    <div class="small-6 large-5 columns">
-      <%= render 'follow_form' if signed_in? %>
+    <div class="large-4 columns">
+      <br/>
+      <%= render 'layouts/micropost_form' if current_user?(@user)%>
       <% if @user.microposts.any? %>
           <h3>Посты (<%= @user.microposts.count %>)</h3>
           <ol class="microposts">
             <%= render @microposts %>
           </ol>
       <% end %>
+
+    </div>
+    <div class="large-4 columns">
+      <%= render 'follow_form' if signed_in? %>
+      <%= render 'layouts/achivment_form' if current_user?(@user)%>
       <% if @user.achivments.any? %>
-          <h3>Посты (<%= @user.achivments.count %>)</h3>
+          <h3>Достижения (<%= @user.achivments.count %>)</h3>
           <ol class="microposts">
             <%= render @achivments%>
           </ol>
       <% end %>
     </div>
-    <div class="small-6 large-7 columns">
+    <div class=" large-4 columns">
       <h2>Личная информация </h2><br/>
       <% @user ||= current_user %>
       <p>
@@ -44,8 +51,8 @@
       <p><strong>Email:</strong> <%= @user.email %></p>
 
       <p><strong>Краткая ифнормация:</strong> <%= @user.info %></p>
+
     </div>
 
-    <div class="small-6 large-7 columns"><%= render 'layouts/micropost_form' %><%= render 'layouts/achivment_form' %></div>
   </div>
 </div>

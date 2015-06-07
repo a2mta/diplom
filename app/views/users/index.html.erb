@@ -3,14 +3,13 @@
   <% @users.each do |user| %>
 
         <div class="large-6 columns">
-          <a href="http://localhost:3000/users/<%= user.id %>">
+          <a href="<%= request.base_url %>/users/<%= user.id %>">
             <div class="user_avatar" style="background-image: url('<%= user.avatar.url(:medium)%>')"></div>
           </a>
           <p><strong>Имя:</strong> <%= user.name %></p>
 
           <p><strong>Email:</strong> <%= user.email %></p>
         </div>
-
   <% end %>
   </div>
 </div>

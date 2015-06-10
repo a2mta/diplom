@@ -1,10 +1,14 @@
 <li>
   <span class="content"><%= micropost.content %></span><br/>
-  <% if micropost.microphoto.url(:medium)=="/images/medium/missing.png"%>
+  <% if micropost.microphoto.url(:medium)=="/images/medium/missing.png" %>
 
-      <% else %>
-      <div class="user_avatar" style="background-image: url('<%= micropost.microphoto.url(:medium)%>')"></div>
-      <% end %>
+  <% else %>
+      <a href="<%= micropost.microphoto.url %>" data-lightbox="example-1">
+        <%=
+            image_tag(micropost.microphoto.url(:medium), size: "150", class: "example-image") %>
+      </a>
+  <% end %>
+  <br/>
   <span class="timestamp">
     <strong>Написано:</strong> <%= time_ago_in_words(micropost.created_at) %> ago.
   </span>

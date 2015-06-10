@@ -15,6 +15,7 @@
 //= require foundation
 //= require turbolinks
 //= require_tree .
+//= require lightbox.min
 
 $(function(){ $(document).foundation(); });
 

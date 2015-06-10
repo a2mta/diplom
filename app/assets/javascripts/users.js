@@ -14,6 +14,7 @@ $(document).ready(function () {
             $('#achivment_start').hide();
             $('#achivment_finish').hide();
             $('#achivment_count').hide();
+            $('#achivment_time').hide();
         }
 
     });

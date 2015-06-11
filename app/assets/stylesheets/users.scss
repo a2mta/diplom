@@ -8,16 +8,23 @@
   background-color: lightskyblue;
 
 }
+
 .user_avatar {
   border-radius: 50%;
   margin-left: 25px;
-  -webkit-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 25px -6px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 25px -6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 25px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 25px -6px rgba(0, 0, 0, 0.75);
   width: 200px;
   height: 200px;
 }
 
-#achivment_content, #achivment_start, #achivment_finish, #achivment_count, #achivment_time {
+.example-image {
+  border-radius: 15%;
+
+}
+
+#achivment_content, #achivment_start, #achivment_finish, #achivment_count, #achivment_time, .achivment_content_info, .achivment_start_info, .achivment_finish_info {
   display: none;
 }
+

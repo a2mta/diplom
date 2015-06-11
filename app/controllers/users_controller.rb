@@ -18,6 +18,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def feed
+    if signed_in?
+      @feed_items = current_user.feed
+    end
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
@@ -43,7 +49,7 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "Пользователь удален."
-    redirect_to users_url
+    redirect_to @user
   end
 
   def show

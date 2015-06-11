@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   root 'pages#index'
-
+  get '/feed', :to => "users#feed"
   match '/signup', to: 'users#new', via: 'get'
   get '/signin', :to => "sessions#new"
   get '/signout', :to => 'sessions#destroy'

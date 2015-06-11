@@ -12,6 +12,7 @@
       <ul class="right">
         <% if signed_in? %>
             <li><%= link_to "Профиль", current_user %></li>
+            <li><%= link_to "Лента", feed_path %></li>
             <li><%= link_to "Все пользователи", users_path %></li>
             <li><%= link_to "Настройки", edit_user_path(current_user) %></li>
             <li><%= link_to "Выйти", signout_path %></li>

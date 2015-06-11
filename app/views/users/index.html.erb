@@ -1,15 +1,21 @@
 <div class="wrapper">
   <div class="row">
-  <% @users.each do |user| %>
+    <% @users.each do |user| %>
+
 
         <div class="large-6 columns">
+          <% if current_user.admin? %>
+              <%= link_to "delete", user, :method => :delete, :confirm => "You sure?",
+                          :title => "Delete #{user.name}" %>
+          <% end %>
           <a href="<%= request.base_url %>/users/<%= user.id %>">
             <div class="user_avatar" style="background-image: url('<%= user.avatar.url(:medium)%>')"></div>
           </a>
+
           <p><strong>Имя:</strong> <%= user.name %></p>
 
           <p><strong>Email:</strong> <%= user.email %></p>
         </div>
-  <% end %>
+    <% end %>
   </div>
 </div>

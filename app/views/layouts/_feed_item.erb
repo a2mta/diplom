@@ -1,0 +1,20 @@
+<div id="<%= feed_item.id %>">
+  <span class="user">
+    <%= image_tag(feed_item.user.avatar.url(:thumb), size: "50", class: "example-image") %>
+    <%= link_to feed_item.user.name, feed_item.user %>
+  </span>
+  <br/>
+  <span class="content"><%= feed_item.content %></span>
+  <br/>
+  <% if feed_item.microphoto.url(:medium)=="/images/medium/missing.png" %>
+
+  <% else %>
+      <a href="<%= feed_item.microphoto.url %>" data-lightbox="example-1">
+        <%= image_tag(feed_item.microphoto.url(:medium), size: "150", class: "example-image") %>
+      </a>
+  <% end %>
+  <br/>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+  </span>
+</div>

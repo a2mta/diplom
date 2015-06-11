@@ -37,10 +37,11 @@ class User < ActiveRecord::Base
     encrypted_password == encrypt(submitted_password)
   end
 
-  def destroy
-    sign_out
-    redirect_to root_path
+  def feed
+    Micropost.from_users_followed_by(self)
   end
+
+
 
   def following?(other_user)
     relationships.find_by(followed_id: other_user.id)

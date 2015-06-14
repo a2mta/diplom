@@ -11,21 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610161148) do
+ActiveRecord::Schema.define(version: 20150614222353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "achivments", force: :cascade do |t|
-    t.string   "content"
+    t.string   "achive_content"
     t.string   "achive_type"
     t.string   "start"
     t.string   "finish"
     t.integer  "count"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "time"
+    t.string   "achive_photo_file_name"
+    t.string   "achive_photo_content_type"
+    t.integer  "achive_photo_file_size"
+    t.datetime "achive_photo_updated_at"
   end
 
   add_index "achivments", ["user_id", "created_at"], name: "index_achivments_on_user_id_and_created_at", using: :btree

@@ -1,7 +1,7 @@
 <%= form_for(@achivment) do |f| %>
-    <% if flash[:error] %>
+    <% if flash[:achive_error] %>
         <div data-alert class="columns small-centered alert-box warning radius">
-          <%= flash[:error] %>
+          <%= flash[:achive_error] %>
           <a href="#" class="close">&times;</a>
         </div>
     <% end %>
@@ -9,7 +9,7 @@
       Выберите тип достижения:
       <%= f.select :achive_type, [['---',''],['Пробежка','run'],['Отжимания','medium'],['Спортивная ходьба','walk']] %>
       <span class="achivment_content_info">Дополнительная информация</span>
-      <%= f.text_area :content, placeholder: "Напишите что нибудь..." %>
+      <%= f.text_area :achive_content, placeholder: "Напишите что нибудь..." %>
       <span class="achivment_start_info">Начало пути</span>
       <%= f.text_area :start, placeholder: "Начало" %>
       <span class="achivment_finish_info">Конец пути</span>
@@ -17,7 +17,7 @@
 
       <%= number_field(:achivment, :count, step: 1) %>
       <%= number_field(:achivment, :time, step: 1) %>
-
+      <%= f.file_field :achive_photo %>
     </div>
     <%= f.submit "Отправить", class: "button radius" %>
 <% end %>

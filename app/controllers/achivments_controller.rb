@@ -6,6 +6,9 @@ class AchivmentsController < ApplicationController
     if @achivment.save
       flash[:success] = "Achve created!"
       redirect_to current_user
+    else
+      flash[:achive_error] = "Заполнены не все обязательные поля"
+      redirect_to @current_user
     end
   end
 
@@ -15,6 +18,6 @@ class AchivmentsController < ApplicationController
   private
 
   def achivment_params
-    params.require(:achivment).permit(:content, :achive_type, :start, :finish, :count, :time)
+    params.require(:achivment).permit(:achive_content, :achive_type, :start, :finish, :count, :time, :achive_photo)
   end
 end

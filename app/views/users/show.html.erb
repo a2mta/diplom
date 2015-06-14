@@ -6,7 +6,8 @@
   <div class="row">
 
     <div class="large-4 columns">
-      <h2>Личная информация </h2><br/>
+      <h2>Информация </h2>
+      <hr/><br/>
       <% @user ||= current_user %>
       <p>
         <a href="<%= following_user_path(@user) %>">
@@ -29,7 +30,7 @@
 
       <p><strong>Email:</strong> <%= @user.email %></p>
 
-      <p><strong>Краткая ифнормация:</strong> <%= @user.info %></p>
+      <p><strong>Краткая информация:</strong> <%= @user.info %></p>
     </div>
     <div class="large-4 columns">
       <%= render 'follow_form' if signed_in? %>

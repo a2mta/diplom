@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   def feed
     if signed_in?
       @feed_items = current_user.feed
+
     end
   end
 

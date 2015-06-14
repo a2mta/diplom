@@ -15,12 +15,21 @@
           render plain: "метров"
         else
           render plain: "раз"
-        end %> <br/> от: <%= achivment.start %> <br/> до: <%= achivment.finish %> </span><br/>
+        end %> <br/><strong> от: </strong><%= achivment.start %> <br/><strong> до: </strong><%= achivment.finish %> </span><br/>
   <%=
       if achivment.achive_type == 'walk' or achivment.achive_type == 'run'
-        render :text => "за #{achivment.time} минут".html_safe
-      end %>
-  <span class="content">Доп. информация<br/><%= achivment.content %></span><br/>
+        render :text => " <strong>за </strong>#{achivment.time} минут".html_safe
+      end %><br/>
+  <span class="content"><strong>Доп. информация</strong><br/><%= achivment.achive_content %></span><br/>
+  <% if achivment.achive_photo.url(:medium)=="/images/medium/missing.png" %>
+
+  <% else %>
+      <a href="<%= achivment.achive_photo.url %>" data-lightbox="example-1">
+        <%=
+            image_tag(achivment.achive_photo.url(:medium), size: "150", class: "example-image") %>
+      </a>
+  <% end %>
+  <br/>
   <span class="timestamp">
     <strong>Написано:</strong> <%= time_ago_in_words(achivment.created_at) %> ago.
   </span>

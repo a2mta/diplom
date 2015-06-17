@@ -7,22 +7,21 @@
 
     <div class="large-4 columns">
       <h2>Информация </h2>
-      <hr/><br/>
+      <hr/>
       <% @user ||= current_user %>
       <p>
         <a href="<%= following_user_path(@user) %>">
           <strong id="following" class="stat">
+            Подписок:
             <%= @user.followed_users.count %>
           </strong>
-          подписок
         </a></p>
-
       <p>
         <a href="<%= followers_user_path(@user) %>">
           <strong id="followers" class="stat">
+            Подписчиков:
             <%= @user.followers.count %>
           </strong>
-          подписано
         </a>
       </p>
 

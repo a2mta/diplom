@@ -1,21 +1,25 @@
 <div class="wrapper">
+
   <div class="row">
-    <% @users.each do |user| %>
+    <section>
+      <h1 style="text-align: center">Все пользователи</h1>
+      <hr/>
+    </section>
+      <% @users.each do |user| %>
+          <div class="large-6 columns users_item">
+            <a href="<%= request.base_url %>/users/<%= user.id %>">
+              <div class="user_avatar" style="background-image: url('<%= user.avatar.url(:medium)%>')"></div>
+            </a>
 
+            <p><strong>Имя:</strong> <%= user.name %></p>
 
-        <div class="large-6 columns">
-          <% if current_user.admin? %>
-              <%= link_to "delete", user, :method => :delete, :confirm => "You sure?",
-                          :title => "Delete #{user.name}" %>
-          <% end %>
-          <a href="<%= request.base_url %>/users/<%= user.id %>">
-            <div class="user_avatar" style="background-image: url('<%= user.avatar.url(:medium)%>')"></div>
-          </a>
-
-          <p><strong>Имя:</strong> <%= user.name %></p>
-
-          <p><strong>Email:</strong> <%= user.email %></p>
-        </div>
-    <% end %>
+            <p><strong>Email:</strong> <%= user.email %></p>
+            <% if current_user.admin? && !current_user?(user) %>
+                <strong><%= link_to "Удалить пользователя", user, method: :delete,
+                                    data: {confirm: "Вы уверены, что хотите удалить этого пользователя ?"} %>
+                </strong>
+            <% end %>
+          </div>
+      <% end %>
   </div>
 </div>

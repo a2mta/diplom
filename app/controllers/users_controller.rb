@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
+  before_action :correct_user, only: :destroy
 
   def new
     @title = "Sign up"
@@ -8,6 +9,7 @@ class UsersController < ApplicationController
 
   def index
     if signed_in?
+      @title = "Все пользователи"
       @users = User.all
     else
       redirect_to root_path
@@ -21,14 +23,15 @@ class UsersController < ApplicationController
   def feed
     if signed_in?
       @feed_items = current_user.feed
-
+      @title = "Лента новостей"
+    else
+      redirect_to root_path
     end
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-
       redirect_to @user
     else
       render 'edit'
@@ -50,8 +53,9 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "Пользователь удален."
-    redirect_to @user
+    redirect_to current_user
   end
+
 
   def show
     if signed_in?
@@ -67,14 +71,16 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "Заявки в друзья"
+    @title = "Подписки"
+    @little_title = "подписки"
     @user = User.find(params[:id])
     @users = @user.followed_users
     render 'show_follow'
   end
 
   def followers
-    @title = "Друзья"
+    @title = "Подписчики"
+    @little_title = "подписчики"
     @user = User.find(params[:id])
     @users = @user.followers
     render 'show_follow'
@@ -85,6 +91,11 @@ class UsersController < ApplicationController
   def admin_user
     @user = User.find(params[:id])
     redirect_to(root_path) if !current_user.admin? || current_user?(@user)
+  end
+
+  def correct_user
+    @micropost = current_user.microposts.find_by(id: params[:id])
+    redirect_to root_url if @micropost.nil?
   end
 
   def user_params

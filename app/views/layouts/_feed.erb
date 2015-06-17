@@ -1,9 +1,18 @@
 <% if @feed_items.any? %>
     <div class="row">
-
-      <div class="large-4 columns">
+      <section>
+        <h1 style="text-align: center">Лента новостей</h1>
+        <hr/>
+      </section>
+      <div class="large-6 columns">
         <%= render partial: 'layouts/feed_item', collection: @feed_items %>
       </div>
     </div>
-
+    <% else %>
+    <div class="row">
+      <section>
+        <h2 style="text-align: center">Ваша лента новостей пуста.</h2>
+      </section>
+    </div>
 <% end %>
+

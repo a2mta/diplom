@@ -12,5 +12,13 @@
   <span class="timestamp">
     <strong>Написано:</strong> <%= time_ago_in_words(micropost.created_at) %> ago.
   </span>
+  <% if current_user?(micropost.user) %>
+      <br/>
+      <strong>
+        <%= link_to "Удалить запись", micropost, method: :delete,
+                    data: {confirm: "Вы уверены, что хотите удалить запись ?"},
+                    title: micropost.content %>
+      </strong>
+  <% end %>
   <hr/>
 </li>

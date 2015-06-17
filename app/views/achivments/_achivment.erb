@@ -33,5 +33,13 @@
   <span class="timestamp">
     <strong>Написано:</strong> <%= time_ago_in_words(achivment.created_at) %> ago.
   </span>
+  <% if current_user?(achivment.user) %>
+      <br/>
+      <strong>
+        <%= link_to "Удалить достижение", achivment, method: :delete,
+                    data: {confirm: "Вы уверены, что хотите удалить достижение ?"},
+                    title: achivment.achive_content %>
+      </strong>
+  <% end %>
   <hr/>
 </li>

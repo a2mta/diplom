@@ -7,15 +7,16 @@
     <% end %>
     <div class="field">
       Выберите тип достижения:
-      <%= f.select :achive_type, [['---',''],['Пробежка','run'],['Отжимания','medium'],['Спортивная ходьба','walk']] %>
+      <%= f.select :achive_type, [['---',''],['Пробежка','run'],['Заплыв','swim'],['Велосипедная поездка','bicycle']] %>
       <span class="achivment_content_info">Дополнительная информация</span>
       <%= f.text_area :achive_content, placeholder: "Напишите что нибудь..." %>
       <span class="achivment_start_info">Начало пути</span>
       <%= f.text_area :start, placeholder: "Начало" %>
       <span class="achivment_finish_info">Конец пути</span>
       <%= f.text_area :finish, placeholder: "Конец" %>
-
+      <span class="achivment_count_info">Дистанция (в метрах)</span>
       <%= number_field(:achivment, :count, step: 1) %>
+      <span class="achivment_time_info">Время (в минутах)</span>
       <%= number_field(:achivment, :time, step: 1) %>
       <%= f.file_field :achive_photo %>
     </div>

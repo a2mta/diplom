@@ -10,7 +10,7 @@
   <% end %>
   <br/>
   <span class="timestamp">
-    <strong>Написано:</strong> <%= time_ago_in_words(micropost.created_at) %> ago.
+    <strong>Написано:</strong> <%= time_ago_in_words(micropost.created_at) %> назад.
   </span>
   <% if current_user?(micropost.user) %>
       <br/>

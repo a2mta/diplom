@@ -1,25 +1,19 @@
 <li>
   Я <%=
-    if achivment.achive_type == 'walk'
-      render plain: "прошел"
+    if achivment.achive_type == 'swim'
+      render plain: "проплыл"
     elsif achivment.achive_type == 'run'
       render plain: "пробежал"
     else
-      render plain: "отжался"
+      render plain: "проехал"
     end %>
-  <span><%= achivment.count %>
-    <%=
-        if achivment.achive_type == 'walk'
-          render plain: "метров"
-        elsif achivment.achive_type == 'run'
-          render plain: "метров"
-        else
-          render plain: "раз"
-        end %> <br/><strong> от: </strong><%= achivment.start %> <br/><strong> до: </strong><%= achivment.finish %> </span><br/>
-  <%=
-      if achivment.achive_type == 'walk' or achivment.achive_type == 'run'
-        render :text => " <strong>за </strong>#{achivment.time} минут".html_safe
-      end %><br/>
+  <span><%=if achivment.achive_type == 'swim'
+             render :text => "#{achivment.count} метров".html_safe
+           end%></span>
+  <span>
+    <br/><%=if achivment.achive_type == 'bicycle' or achivment.achive_type == 'run'
+              render :text => "<strong> от: </strong>#{achivment.start}<br/><strong> до: </strong>#{achivment.finish}".html_safe end%></span><br/>
+  <span><strong>за:</strong> <%= achivment.time %> минут</span><br/>
   <span class="content"><strong>Доп. информация</strong><br/><%= achivment.achive_content %></span><br/>
   <% if achivment.achive_photo.url(:medium)=="/images/medium/missing.png" %>
 
@@ -31,7 +25,7 @@
   <% end %>
   <br/>
   <span class="timestamp">
-    <strong>Написано:</strong> <%= time_ago_in_words(achivment.created_at) %> ago.
+    <strong>Написано:</strong> <%= time_ago_in_words(achivment.created_at) %> назад.
   </span>
   <% if current_user?(achivment.user) %>
       <br/>

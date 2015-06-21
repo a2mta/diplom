@@ -1,0 +1,33 @@
+<div id="<%= achive_feed_item.id %>">
+  <span class="user">
+    <%= image_tag(achive_feed_item.user.avatar.url(:thumb), size: "50", class: "example-image") %>
+    <%= link_to achive_feed_item.user.name, achive_feed_item.user %>
+  </span>
+  <br/>
+  <%=if achive_feed_item.achive_type == 'swim'
+      render :text => "Я проплыл #{achive_feed_item.count} метров <br>
+      <strong>за:</strong> #{achive_feed_item.time} минут".html_safe
+      end%>
+  <%=if achive_feed_item.achive_type == 'run'
+       render :text => "Я пробежал <br> <strong>от: </strong> #{achive_feed_item.start}<br>
+       <strong>до: </strong>#{achive_feed_item.finish}<br>
+       <strong>за:</strong> #{achive_feed_item.time} минут".html_safe
+     end%>
+  <%=if achive_feed_item.achive_type == 'bicycle'
+       render :text => "Я проехал <br> <strong>от: </strong> #{achive_feed_item.start}<br>
+       <strong>до: </strong>#{achive_feed_item.finish}<br>
+       <strong>за:</strong> #{achive_feed_item.time} минут".html_safe
+     end%>
+  <div class="content"><strong>Дополнительная информация:</strong><br/><%= achive_feed_item.achive_content %></div>
+  <% if achive_feed_item.achive_photo.url(:medium)=="/images/medium/missing.png" %>
+  <% else %>
+      <a href="<%= achive_feed_item.achive_photo.url %>" data-lightbox="example-1">
+        <%= image_tag(achive_feed_item.achive_photo.url(:medium), size: "150", class: "example-image") %>
+      </a>
+  <% end %>
+  <br/>
+  <span class="timestamp">
+    Написано <%= time_ago_in_words(achive_feed_item.created_at) %> назад.
+  </span>
+  <hr/>
+</div>

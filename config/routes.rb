@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   root 'pages#index'
   get '/feed', :to => "users#feed"
+  get '/achive_feed', :to => "users#achive_feed"
   match '/signup', to: 'users#new', via: 'get'
   get '/signin', :to => "sessions#new"
   get '/signout', :to => 'sessions#destroy'
-  match '/delete_account', to: 'users#destroy', via: 'get'
 end

@@ -34,7 +34,10 @@
 
 }
 
-#achivment_achive_content, #lightbox, #achivment_achive_photo, #achivment_start, #achivment_finish, #achivment_count, #achivment_time, .achivment_content_info, .achivment_start_info, .achivment_finish_info {
+#achivment_achive_content, #lightbox, #achivment_achive_photo, #achivment_start, #achivment_finish, #achivment_count, #achivment_time, .achivment_content_info, .achivment_start_info, .achivment_finish_info, .achivment_count_info, .achivment_time_info {
   display: none;
 }
 
+.content:empty {
+  display: none;
+}
